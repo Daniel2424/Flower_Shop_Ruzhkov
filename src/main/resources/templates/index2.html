@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flowers</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/css/style.css">
+
+
+</head>
+<body>
+
+
+
+<header>
+
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+
+    <a th:href="@{/}" class="logo">Цветочки</a>
+
+    <nav class="navbar">
+
+        <a href="#about">О нас</a>
+        <a href="#products">Цветы</a>
+        <a href="#review">Отзывы</a>
+
+
+    </nav>
+
+
+    <div class="icons">
+
+
+
+        <a th:href="@{/cart}" class="fas fa-shopping-cart"></a>
+        <a th:href="@{/profile}" class="fas fa-user"></a>
+    </div>
+    <div>
+        <form th:method="POST" th:action="@{/logout}">
+            <input class="end" sec:authorize="isAuthenticated()" type="submit" value="Выйти">
+        </form>
+
+    </div>
+
+</header>
+
+
+
+
+
+
+
+
+
+
+<section style="margin-top: 8rem" class="products" id="products">
+
+    <h1 class="heading"> Цветы  </h1>
+
+    <div class="box-container">
+
+
+        <div class="wrapper">
+            <div class="content">
+                <div class="types" th:each="flower : ${allFlowers}">
+                    <div class="carts-type" >
+                        <h1 style="text-align: center; size: 5rem" th:text="${flower.name}" ></h1>
+
+                        <div class="img-cart">
+                            <a style="margin-left: 65rem" th:href="@{'/flower/' + ${flower.id}}">
+                                <img  th:src="@{'/img/'} + ${flower.path}">
+                            </a>
+                            <br><br>
+
+                            <h1 style="margin-bottom: 4rem" th:text="${flower.description}"></h1>
+                            <a style="margin-left: 72rem"   th:href="@{/cart/add/3}" class="lololo"  >Добавить в корзину</a>
+                            <br><br><br>
+                            <h1 style="text-align: center" class="price" th:text="${flower.price} + ' руб'"  ></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+
+
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>Ссылки</h3>
+            <a href="#">Начало</a>
+            <a href="#">О нас</a>
+            <a href="#">Цветы</a>
+
+
+        </div>
+
+        <div class="box">
+            <h3>Дополнительные ссылки</h3>
+            <a href="https://vk.com/ruzhkov24">Мой аккаунт</a>
+        </div>
+
+        <div class="box">
+            <h3>Наши офисы</h3>
+            <a href="#">Россия</a>
+            <a href="#">USA</a>
+            <a href="#">Япония</a>
+            <a href="#">Франция</a>
+        </div>
+
+        <div class="box">
+            <h3>Контактная информация</h3>
+            <a href="#">+123-456-7890</a>
+            <a href="#">d.ruzhkov7@gmail.com</a>
+            <a href="#">Moscow - 11111</a>
+            <img src="img/payment.png" alt="">
+        </div>
+
+    </div>
+
+
+
+</section>
+
+
+</body>
+</html>

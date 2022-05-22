@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Корзина</title>
+
+</head>
+<body>
+<header>
+
+  <input type="checkbox" name="" id="toggler">
+  <label for="toggler" class="fas fa-bars"></label>
+
+  <a th:href="@{/}" class="logo">Цветочки</a>
+
+  <nav class="navbar">
+
+    <a href="#about">О нас</a>
+    <a href="#products">Цветы</a>
+    <a href="#review">Отзывы</a>
+
+
+  </nav>
+
+
+  <div class="icons">
+
+
+    <a th:href="@{/cart}" class="fas fa-shopping-cart"></a>
+    <a th:href="@{/profile/}" class="fas fa-user" th:text="${person}"></a>
+
+  </div>
+  <div>
+    <form th:method="POST" th:action="@{/logout}">
+      <input class="end" type="submit" value="Выйти">
+    </form>
+  </div>
+
+</header>
+<section style="margin-top: 8rem" class="products" id="products">
+
+  <h1 class="heading"> Корзина </h1>
+
+  <div class="box-container">
+
+    <div class="box" th:each="flower : ${user.flowerList}">
+
+      <div class="image">
+        <img th:src="@{'/img/' + ${flower.path}}" alt="">
+
+      </div>
+      <div class="content">
+        <h3 th:text="${flower.name}"></h3>
+        <div class="price" th:text="${flower.price} + ' руб'"> </div>
+        <a class="del" th:href="@{'/cart/delete/'+ ${flower.id}}">Удалить из корзины</a>
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+  <div class="all">
+    <div  class="boxAll"><span class="a" th:text="'Всего:  '+ ${total} + '  руб'"></span></div>
+    <div class="boxAll"><input type="submit" class="btn" value="Перейти к оплате"></div>
+
+  </div>
+
+
+</section>
+
+
+
+</body>
+</html>

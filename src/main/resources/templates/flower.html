@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower_Shop</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/css/style.css">
+
+
+</head>
+<body>
+
+
+<header>
+
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+
+    <a th:href="@{/}" class="logo">Цветочки</a>
+
+    <nav class="navbar">
+
+        <a href="#about">О нас</a>
+        <a href="#products">Цветы</a>
+        <a href="#review">Отзывы</a>
+
+
+    </nav>
+
+
+    <div class="icons">
+
+
+
+        <a th:href="@{/cart}" class="fas fa-shopping-cart"></a>
+        <a th:href="@{/profile}" class="fas fa-user"></a>
+    </div>
+    <div>
+        <form th:method="POST" th:action="@{/logout}">
+            <input class="end" sec:authorize="isAuthenticated()" type="submit" value="Выйти">
+        </form>
+
+    </div>
+
+</header>
+
+<!-- header section ends -->
+
+
+<!-- prodcuts section starts  -->
+
+<section class="productsFlow" id="products">
+
+    <h1 class="heading"> Цветы </h1>
+
+
+    <img style="margin-left: 65rem" s th:src="@{'/img/'} + ${flower.path}" alt="">
+    <br>
+    <h1 style="text-align: center" th:text="${flower.name}"></h1>
+    <h3  th:text="${flower.description}"></h3>
+    <br>
+    <h4 style="text-align: center" th:text="${flower.quantity} + ' цветков осталось в наличии'"></h4>
+
+
+
+
+</section>
+
+<!-- prodcuts section ends -->
+
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#">home</a>
+            <a href="#">about</a>
+            <a href="#">products</a>
+            <a href="#">review</a>
+            <a href="#">contact</a>
+        </div>
+
+        <div class="box">
+            <h3>extra links</h3>
+            <a href="#">my account</a>
+            <a href="#">my order</a>
+            <a href="#">my favorite</a>
+        </div>
+
+        <div class="box">
+            <h3>locations</h3>
+            <a href="#">india</a>
+            <a href="#">USA</a>
+            <a href="#">japan</a>
+            <a href="#">france</a>
+        </div>
+
+        <div class="box">
+            <h3>Контактная информация</h3>
+            <a href="#">+123-456-7890</a>
+            <a href="#">d.ruzhkov7@gmail.com</a>
+            <a href="#">Moscow - 11111</a>
+            <img src="img/payment.png" alt="">
+        </div>
+
+    </div>
+
+
+
+</section>
+
+
+
+
+</body>
+</html>

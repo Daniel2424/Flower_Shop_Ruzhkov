@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+    <html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower_Shop</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/css/style.css">
+
+
+</head>
+<body>
+
+
+<header>
+
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+
+    <a href="#" class="logo">Цветочки</a>
+
+    <nav class="navbar">
+
+        <a href="#about">О нас</a>
+        <a href="#products">Цветы</a>
+        <a href="#review">Отзывы</a>
+
+
+    </nav>
+
+
+    <div class="icons">
+
+
+        <a th:href="@{/cart}" class="fas fa-shopping-cart"></a>
+        <a th:href="@{/profile/}" class="fas fa-user" th:text="${person}"></a>
+
+    </div>
+    <div>
+        <form th:method="POST" th:action="@{/logout}">
+            <input class="end" sec:authorize="isAuthenticated()" type="submit" value="Выйти">
+        </form>
+
+    </div>
+
+</header>
+
+
+<section class="home" id="home">
+
+    <div class="content">
+        <h3>Свежие цветы</h3>
+        <span> Натуральные & Прекрасные Цветы </span>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae laborum ut minus corrupti dolorum dolore
+            assumenda iste voluptate dolorem pariatur.</p>
+        <a href="#" class="btn">Купить сейчас</a>
+    </div>
+
+</section>
+
+
+
+<section class="about" id="about">
+
+    <h1 class="heading"><span> О </span> нас </h1>
+
+    <div class="row">
+
+        <div class="video-container">
+            <video src="img/about-vid.mp4" loop autoplay muted></video>
+            <h3>Лучшие цены на цветы</h3>
+        </div>
+
+        <div class="content">
+            <h3>Почему выбирают нас?</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem cumque sit nemo pariatur corporis
+                perspiciatis aspernatur a ullam repudiandae autem asperiores quibusdam omnis commodi alias repellat
+                illum, unde optio temporibus.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium ea est commodi incidunt magni quia
+                molestias perspiciatis, unde repudiandae quidem.</p>
+            <a href="#" class="btn">читать больше</a>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="icons-container">
+
+    <div class="icons">
+        <img src="img/icon-1.png" alt="">
+        <div class="info">
+            <h3>Бесплатная доставка</h3>
+            <span>На все заказы</span>
+        </div>
+    </div>
+
+    <div class="icons">
+        <img src="img/icon-2.png" alt="">
+        <div class="info">
+            <h3>5 дней возврат средств</h3>
+            <span>Гарантия возврата денег</span>
+        </div>
+    </div>
+
+    <div class="icons">
+        <img src="img/icon-3.png" alt="">
+        <div class="info">
+            <h3>Предложения & подарки</h3>
+            <span>На все заказы</span>
+        </div>
+    </div>
+
+    <div class="icons">
+        <img src="img/icon-4.png" alt="">
+        <div class="info">
+            <h3>Безопасные платежи</h3>
+            <span>защищено PayPal</span>
+        </div>
+    </div>
+
+</section>
+
+
+
+<section class="products" id="products">
+
+    <h1 class="heading"> Цветы </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+
+            <div class="image">
+                <img src="img/im1.jpg" alt="">
+                <div class="icons">
+
+                    <a th:href="@{/cart/add/1}" class="cart-btn">Добавить в корзину</a>
+                    <a th:href="@{flower/1}" class="cart-btn">Посмотреть</a>
+
+                </div>
+            </div>
+            <div class="content">
+                <h3>Пионовые розы</h3>
+                <div class="price"> 3890 <span>руб</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+
+            <div class="image">
+                <img src="img/im2.jpg" alt="">
+                <div class="icons">
+                    <a th:href="@{/cart/add/2}" class="cart-btn">Добавить в корзину</a>
+                    <a th:href="@{/flower/2}" class="cart-btn">Посмотреть</a>
+
+                </div>
+            </div>
+            <div class="content">
+                <h3>Кустовые ромашки</h3>
+                <div class="price"> 2392 <span>руб</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+
+            <div class="image">
+                <img src="img/im3.jpg" alt="">
+                <div class="icons">
+                    <a th:href="@{/cart/add/3}" class="cart-btn">Добавить в корзину</a>
+                    <a th:href="@{/flower/3}" class="cart-btn">Посмотреть</a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Пионы</h3>
+                <div class="price"> 7990 <span>руб</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+
+            <div class="image">
+                <img src="img/im4.jpg" alt="">
+                <div class="icons">
+                    <a th:href="@{/cart/add/4}" class="cart-btn">Добавить в корзину</a>
+                    <a th:href="@{/flower/4}" class="cart-btn">Посмотреть</a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Нежный букет хризантем</h3>
+                <div class="price"> 2390 <span>руб</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+
+            <div class="image">
+                <img src="img/im5.jpg" alt="">
+                <div class="icons">
+                    <a th:href="@{/cart/add/5}" class="cart-btn">Добавить в корзину</a>
+                    <a th:href="@{/flower/5}" class="cart-btn">Посмотреть</a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Ирисы весенние</h3>
+                <div class="price"> 7990 <span>руб</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+
+            <div class="image">
+                <img src="img/im6.jpg" alt="">
+                <div class="icons">
+                    <a th:href="@{/cart/add/6}" class="cart-btn">Добавить в корзину</a>
+                    <a th:href="@{/flower/6}" class="cart-btn">Посмотреть</a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Цветы для интерьера</h3>
+                <div class="price"> 7990 <span>руб</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+
+            <div class="image">
+                <img src="img/im7.jpg" alt="">
+                <div class="icons">
+                    <a th:href="@{/cart/add/7}" class="cart-btn">Добавить в корзину</a>
+                    <a th:href="@{/flower/7}" class="cart-btn">Посмотреть</a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Персиковые диантусы</h3>
+                <div class="price"> 2890 <span>руб</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+
+            <div class="image">
+                <img src="img/im8.jpg" alt="">
+                <div class="icons">
+                    <a th:href="@{/cart/add/8}" class="cart-btn">Добавить в корзину</a>
+                    <a th:href="@{/flower/8}" class="cart-btn">Посмотреть</a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Кенийские кустовые розы</h3>
+                <div class="price">3063 <span>руб</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+
+            <div class="image">
+                <img src="img/im9.jpg" alt="">
+                <div class="icons">
+                    <a th:href="@{/cart/add/9}" class="cart-btn">Добавить в корзину</a>
+                    <a th:href="@{/flower/9}" class="cart-btn">Посмотреть</a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>"Эвкалипт"</h3>
+                <div class="price"> 1990 <span>руб</span></div>
+            </div>
+        </div>
+
+    </div>
+    <a th:href="@{/test}"> Читать больше</a>
+
+</section>
+
+
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>Ссылки</h3>
+            <a href="#">Начало</a>
+            <a href="#">О нас</a>
+            <a href="#">Цветы</a>
+
+
+        </div>
+
+        <div class="box">
+            <h3>Дополнительные ссылки</h3>
+            <a href="https://vk.com/ruzhkov24">Мой аккаунт</a>
+        </div>
+
+        <div class="box">
+            <h3>Наши офисы</h3>
+            <a href="#">Россия</a>
+            <a href="#">USA</a>
+            <a href="#">Япония</a>
+            <a href="#">Франция</a>
+        </div>
+
+        <div class="box">
+            <h3>Контактная информация</h3>
+            <a href="#">+123-456-7890</a>
+            <a href="#">d.ruzhkov7@gmail.com</a>
+            <a href="#">Moscow - 11111</a>
+            <img src="img/payment.png" alt="">
+        </div>
+
+    </div>
+
+
+
+</section>
+
+
+
+
+</body>
+</html>
